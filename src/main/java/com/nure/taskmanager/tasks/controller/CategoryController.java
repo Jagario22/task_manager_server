@@ -27,4 +27,9 @@ public class CategoryController {
     public TaskCategory create(@RequestBody TaskCategory taskCategory) {
         return categoryService.save(taskCategory);
     }
+
+    @DeleteMapping("id/{categoryId}/delete")
+    public void deleteById(@PathVariable("categoryId") Long categoryId) {
+        categoryService.deleteById(categoryId);
+    }
 }

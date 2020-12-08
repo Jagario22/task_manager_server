@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface CategoryRepository extends JpaRepository<TaskCategory, Long> {
     List<TaskCategory> findAll();
+    void deleteById(Long id);
 }

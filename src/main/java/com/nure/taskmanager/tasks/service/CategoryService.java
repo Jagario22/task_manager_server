@@ -10,8 +10,8 @@ import java.util.List;
 
 @Service
 public class CategoryService {
-    final  TaskRepository taskRepository;
-    final CategoryRepository categoryRepository;
+    private final  TaskRepository taskRepository;
+    private final CategoryRepository categoryRepository;
 
 
     public CategoryService(TaskRepository taskRepository, CategoryRepository categoryRepository) {
@@ -20,8 +20,7 @@ public class CategoryService {
     }
     public TaskCategory findByTaskId(Long taskId) {
         Task task = taskRepository.findById(taskId).get();
-        TaskCategory category = task.getCategory();
-        return category;
+        return task.getCategory();
     }
 
     public List<TaskCategory> findAll() {
@@ -30,5 +29,9 @@ public class CategoryService {
 
     public TaskCategory save(TaskCategory taskCategory) {
         return categoryRepository.save(taskCategory);
+    }
+
+    public void deleteById(Long categoryId) {
+        categoryRepository.deleteById(categoryId);
     }
 }
